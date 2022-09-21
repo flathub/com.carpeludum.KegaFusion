@@ -29,6 +29,7 @@ typedef struct {
 #define NUM_DIRS (sizeof (dirs) / sizeof ((dirs)[0]))
 #include "directories.h"
 
+static void *(*func_dlopen)(const char *filename, int flags);
 static DIR *(*func_opendir)(const char *name) = 0;
 static int (*func_openat)(int dirfd, const char *pathname, int flags);
 static FILE *(*func_fopen64)(const char *pathname, const char *mode) = 0;
@@ -45,6 +46,7 @@ init (void)
 	unsigned int i;
 	const char *home;
 
+	func_dlopen = dlsym(RTLD_NEXT, "dlopen");
 	func_opendir = dlsym(RTLD_NEXT, "opendir");
 	func_openat = dlsym(RTLD_NEXT, "openat");
 	func_fopen64 = dlsym(RTLD_NEXT, "fopen64");
@@ -82,6 +84,35 @@ init (void)
 		dirs[i].dest_name = strdup (buffer);
 		D("dest name: %s\n", dirs[i].dest_name);
 	}
+}
+
+void *
+dlopen (const char *filename, int flags)
+{
+	unsigned int i;
+
+	if (!func_dlopen)
+		init();
+
+	D("dlopen(\"%s\", 0x%x)\n", filename, flags);
+
+	if (!filename)
+		goto bail;
+
+	for (i = 0; i < NUM_DIRS; i++) {
+		if (strncmp (filename, dirs[i].orig_name, strlen (dirs[i].orig_name)) == 0) {
+			char dest[PATH_MAX];
+
+			memset (dest, 0, PATH_MAX);
+			strcat (dest, dirs[i].dest_name);
+			strcat (dest, filename + strlen (dirs[i].orig_name));
+			D("redirection %s to %s\n", filename, dest);
+			return (*func_dlopen) (dest, flags);
+		}
+	}
+
+bail:
+	return (*func_dlopen) (filename, flags);
 }
 
 DIR *
