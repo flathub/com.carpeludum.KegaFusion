@@ -71,7 +71,7 @@ modules:
       - cp *.rpi /app/lib/KegaFusion/Plugins/
       - install -d /app/share/doc/KegaFusion
       - cp *.txt /app/share/doc/KegaFusion
-      - install -Dm644 com.carpeludum.KegaFusion.png /app/share/icons/com.carpeludum.KegaFusion.png
+      - install -Dm644 com.carpeludum.KegaFusion.png -t /app/share/icons/hicolor/256x256/apps/
       - install -Dm644 -t /app/share/applications/ com.carpeludum.KegaFusion.desktop
       - install -Dm644 -t /app/share/metainfo/ com.carpeludum.KegaFusion.metainfo.xml
       # Directories for the extensions
