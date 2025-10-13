@@ -13,11 +13,11 @@
     <p>
       Kega Fusion is an emulator for a number of different Sega 8 and 16-bit consoles.
     </p>
-    <p>
+    <ul>
       <li>Emulates the Sega SG-1000, SC-3000, Master System, and Game Gear</li>
       <li>Emulates the Sega MegaDrive/Genesis and its accessories the Sega Mega-CD/Sega-CD and the Sega 32X</li>
       <li>Emulates the Sega Pico</li>
-    </p>
+    </ul>
   </description>
   <url type="homepage">https://www.carpeludum.com/kega-fusion/</url>
   <screenshots>
