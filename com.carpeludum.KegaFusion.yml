@@ -12,7 +12,8 @@ finish-args:
    # Play sounds
    - --socket=pulseaudio
    # Joystick and GPU access
-   - --device=all
+   - --device=input
+   - --require-version=1.16.0
    # Get access to the files
    - --filesystem=home:ro
    - --filesystem=xdg-run/gvfs:ro
