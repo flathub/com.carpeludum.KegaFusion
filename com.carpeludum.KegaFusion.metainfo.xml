@@ -10,6 +10,7 @@
   <launchable type="desktop-id">com.carpeludum.KegaFusion.desktop</launchable>
   <content_rating type="oars-1.1"/>
   <description>
+    <p>**This is a community package of Kega Fusion and not officially supported by Steve Snake.**</p>
     <p>
       Kega Fusion is an emulator for a number of different Sega 8 and 16-bit consoles.
     </p>
