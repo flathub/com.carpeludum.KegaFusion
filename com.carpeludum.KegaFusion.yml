@@ -60,6 +60,33 @@ modules:
   - shared-modules/glu/glu-9.json
   - shared-modules/gtk2/gtk2.json
 
+  - name: gdk-pixbuf-loaders-others
+    buildsystem: meson
+    config-opts:
+      - -Dgtk_doc=false
+      - -Dman=false
+      - -Dintrospection=disabled
+      - -Dinstalled_tests=false
+      - -Dtests=false
+      - -Ddocumentation=false
+      - -Dglycin=disabled
+      - -Dandroid=disabled
+      - -Dbuiltin_loaders=none
+      - -Dpng=enabled
+      - -Dtiff=disabled
+      - -Djpeg=disabled
+      - -Dgif=disabled
+      - -Dothers=enabled
+    sources:
+      - type: archive
+        url: https://gitlab.gnome.org/GNOME/gdk-pixbuf/-/archive/2.44.3/gdk-pixbuf-2.44.3.tar.gz
+        sha256: cc591e3949a95e2f7b50173c9373df8846648b15aa596d9e7ec7258381bfac0d
+    cleanup:
+      - /bin
+      - /include
+      - /share
+      - /lib/pkgconfig
+
   - name: kega-fusion
     buildsystem: simple
     build-commands:
