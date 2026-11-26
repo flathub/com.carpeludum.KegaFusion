@@ -5,8 +5,7 @@
   <name>Kega Fusion</name>
   <summary>An emulator for Sega 8 and 16-bit consoles</summary>
   <metadata_license>CC0-1.0</metadata_license>
-  <!-- license linked from https://www.adobe.com/legal/licenses-terms.html -->
-  <project_license>LicenseRef-proprietary</project_license>
+  <project_license>LicenseRef-proprietary=https://www.carpeludum.com/kega-fusion/</project_license>
   <launchable type="desktop-id">com.carpeludum.KegaFusion.desktop</launchable>
   <content_rating type="oars-1.1"/>
   <description>
